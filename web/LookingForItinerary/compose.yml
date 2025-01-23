@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80" # Pemetaan port
+    volumes:
+      - ./app:/var/www/html # Hanya direktori app yang diekspos
+      - ./private:/var/www/private # Direktori private tetap di container
+    environment:
+      - FLAG=${FLAG}
+    restart: always
