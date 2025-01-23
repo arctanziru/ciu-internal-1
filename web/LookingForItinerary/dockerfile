@@ -1,0 +1,10 @@
+FROM php:8.0-apache
+
+# Salin folder app (kode aplikasi) ke direktori web server
+COPY app/ /var/www/html/
+
+# Salin folder private ke dalam container (tidak di dalam root server)
+COPY private/ /var/www/private/
+
+# Pastikan file di private tidak dapat diakses langsung
+RUN chmod -R 700 /var/www/private
