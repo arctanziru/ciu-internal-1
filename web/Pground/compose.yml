@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ssti-challenge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3030:3000"
+    environment:
+      - FLAG=${FLAG}
+      - FLAG_FILE=${FLAG_FILE}
+    restart: always
