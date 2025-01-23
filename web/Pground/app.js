@@ -10,10 +10,10 @@ app.use(bodyParser.json());
 
 require('dotenv').config();
 
-const blacklist = ['require', 'fs', 'flag', 'readFileSync', 'process', 'constructor', '_load'];
+const blacklist = ['require', 'fs', 'readFileSync', 'process', 'constructor', '_load'];
 
 const flag = process.env.FLAG || 'CIU2025{K4MU_H3B4T}';
-const flagFileName = process.env.FLAG_FILE || `flag_${Math.random().toString(36).substring(2, 8)}.txt`;
+const flagFileName = process.env.FLAG_FILE || `${Math.random().toString(36).substring(2, 8)}.txt`;
 fs.writeFileSync(path.join(__dirname, flagFileName), flag);
 
 app.get('/', (req, res) => {
@@ -128,13 +128,9 @@ app.post('/render', (req, res) => {
     }
   }
 
-  try {
-    const compiledFunction = pug.compile(userTemplate);
-    const html = compiledFunction();
-    res.status(200).send(html);
-  } catch (err) {
-    res.status(200).send(`<p>${userTemplate}</p>`);
-  }
+  const compiledFunction = pug.compile(userTemplate);
+  const html = compiledFunction();
+  res.status(200).send(html);
 });
 
 app.listen(3000, () => {
