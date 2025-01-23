@@ -9,5 +9,4 @@ services:
       - "3030:3000"
     environment:
       - FLAG=${FLAG}
-      - FLAG_FILE=${FLAG_FILE}
     restart: always
