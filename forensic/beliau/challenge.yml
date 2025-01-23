@@ -1,0 +1,45 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "beliau"
+author: "Pablu"
+category: Forensic
+description: |
+    **Author**: `Pablu`
+
+    entah apa yang beliau lakukan
+value: 0
+type: dynamic
+extra:
+    initial: 500
+    decay: 20
+    minimum: 100
+
+
+
+# Flags specify answers that your challenge use. You should generally provide
+# at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries
+flags:
+    - CIU2025{f0r3ns1c_1s_V3ry_E4zyyyyyyyyyy09}
+
+# Tags are used to classify your challenge with topics. You should provide at
+# least one.
+# Can be removed if unused
+# Accepts strings
+tags:
+    - forensic
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+files:
+    - ./src/beliau.pcapng
+
+# The state of the challenge.
+# This is visible by default. It takes two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"
