@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 require('dotenv').config();
 
-const blacklist = ['require', 'fs', 'readFileSync', 'process', 'constructor', '_load'];
+const blacklist = ['require', 'fs', 'readFileSync', 'process', 'constructor', '_load', 'global'];
 
 const flag = process.env.FLAG || 'CIU2025{K4MU_H3B4T}';
 const flagFileName = process.env.FLAG_FILE || `${Math.random().toString(36).substring(2, 8)}.txt`;
