@@ -1,6 +1,6 @@
 import marshal
 
-f = open("main", 'rb')
+f = open("ular", 'rb')
 s = f.read()
 f.close()
 
