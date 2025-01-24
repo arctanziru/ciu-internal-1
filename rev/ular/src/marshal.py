@@ -1,11 +1,11 @@
 import marshal
 
-pyc_path = "__pycache__/challenge.cpython-312.pyc"
+pyc_path = "__pycache__/ular.cpython-310.pyc"
 
 with open(pyc_path, "rb") as f:
     f.read(16)
     code_object = marshal.load(f)
 
-with open("challenge.marshal", "wb") as f:
+with open("ular", "wb") as f:
     f.write(marshal.dumps(code_object))
 

@@ -7,9 +7,7 @@ struct Instruction {
     uint8_t* buffer;
 };
 
-union Variable {
-    int i;
-} variables[64];
+int32_t variables[64];
 
 int main()
 {
@@ -38,7 +36,7 @@ int main()
                 int32_t value = *(int32_t*)&instruction.buffer[instruction.pc];
                 instruction.pc += 4;
 
-                variables[index].i = value;
+                variables[index] = value;
             }
 
             break;
@@ -48,7 +46,7 @@ int main()
                 int32_t value = *(int32_t*)&instruction.buffer[instruction.pc];
                 instruction.pc += 4;
 
-                variables[index].i += value;
+                variables[index] += value;
             }
 
             break;
@@ -58,7 +56,7 @@ int main()
                 int32_t value = *(int32_t*)&instruction.buffer[instruction.pc];
                 instruction.pc += 4;
 
-                variables[index].i -= value;
+                variables[index] -= value;
             }
 
             break;
@@ -68,7 +66,7 @@ int main()
                 int32_t value = *(int32_t*)&instruction.buffer[instruction.pc];
                 instruction.pc += 4;
 
-                variables[index].i *= value;
+                variables[index] *= value;
             }
 
             break;
@@ -78,12 +76,16 @@ int main()
                 int32_t value = *(int32_t*)&instruction.buffer[instruction.pc];
                 instruction.pc += 4;
 
-                variables[index].i /= value;
+                variables[index] /= value;
             }
 
             break;
         }
     }
+
+    for (int i = 0; i < 64; i++) {
+        printf("%d,", variables[i]);
+    }   
 
     free(instruction.buffer);
     return 0;

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            var encryptedText = encryptPlainText(String.valueOf(R.string.whenyh), value);
+            var encryptedText = encryptPlainText(getResources().getString(R.string.whenyh), value);
             System.out.println("Encrypted text: " + encryptedText);
 
             TextView tv = binding.sampleText;
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Example of a call to a native method
-//        TextView tv = binding.sampleText;
-//        tv.setText(stringFromJNI());
+        TextView tv = binding.sampleText;
+        tv.setText(stringFromJNI());
     }
 
     /**
