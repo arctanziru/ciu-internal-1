@@ -1,5 +1,4 @@
 from Crypto.Util.number import *
-from random import random
 
 p = getPrime(1024)
 p2 = getPrime(1024)
