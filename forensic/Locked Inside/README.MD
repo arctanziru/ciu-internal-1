@@ -18,3 +18,7 @@ Setup
 	1.	Download the file chall.zip from the provided link.
 	2.	Use tools like John the Ripper or hashcat to analyze the file and unlock it.
 	3.	Once unlocked, inspect the extracted content to find the flag.
+
+FLAG : CIU2025{G4MP4NGK4N_H4CK_Z1P)
+
+Don Neto
