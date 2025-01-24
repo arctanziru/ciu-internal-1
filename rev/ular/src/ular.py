@@ -30,8 +30,9 @@ secret[26] = 107
 secret[21] = 110
 
 def verify_flag(flag):
-    if flag == secret:
-        print("Correct! Here's your flag:", secret)
+    secret_str = ''.join([chr(x) for x in secret])
+    if flag == secret_str:
+        print("Correct! Here's your flag:", secret_str)
     else:
         print("Incorrect! Try again.")
 

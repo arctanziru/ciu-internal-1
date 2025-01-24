@@ -11,7 +11,7 @@ Java_com_example_aplikasi_MainActivity_stringFromJNI(
     return env->NewStringUTF(hello.c_str());
 }
 
-std::string rotate_string(const std::string& input, const std::string& ignore)
+std::string special_xor(const std::string& input, const std::string& ignore)
 {
     std::string rotated;
     for (char c : input) {
@@ -42,8 +42,8 @@ Java_com_example_aplikasi_MainActivity_encryptPlainText(JNIEnv *env, jobject thi
     const char* when_yh_str{ env->GetStringUTFChars(when_yh, nullptr) };
     const char* plain_text_str{ env->GetStringUTFChars(plain_text, nullptr) };
 
-    auto rotted = rotate_string(plain_text_str, when_yh_str);
-    auto hex = string_to_hex(rotted);
+    auto xored = special_xor(plain_text_str, when_yh_str);
+    auto hex = string_to_hex(xored);
 
     env->ReleaseStringUTFChars(when_yh, when_yh_str);
     env->ReleaseStringUTFChars(plain_text, plain_text_str);
