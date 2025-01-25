@@ -5,7 +5,7 @@ Category: pwn
 ### Description
 Jikoshoukai adalah momen bagi setiap anggota JKT48 untuk menunjukkan kepribadian dan karakter unik mereka. Dengan format perkenalan yang fleksibel, anggota bisa menambahkan sentuhan pribadi, seperti slogan atau gestur khas, yang membedakan mereka dari anggota lainnya.
 ```txt
-nc ip 3030
+nc ip 9988
 ```
 <br>
 

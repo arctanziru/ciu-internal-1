@@ -4,5 +4,5 @@ services:
   jikoshoukai:
     build: .
     ports:
-      - "3030:3030"
+      - "9988:9988"
     restart: unless-stopped

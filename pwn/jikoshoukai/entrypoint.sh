@@ -7,5 +7,5 @@ fi
 
 chmod +x /home/ctf/jiko
 
-echo "Challenge is running on port 3030..."
-exec socat TCP-LISTEN:3030,reuseaddr,fork EXEC:/home/ctf/jiko,stderr
+echo "Challenge is running on port 9988..."
+exec socat TCP-LISTEN:9988,reuseaddr,fork EXEC:/home/ctf/jiko,stderr

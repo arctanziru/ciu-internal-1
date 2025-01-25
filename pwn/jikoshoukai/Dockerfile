@@ -12,6 +12,6 @@ RUN chown ctf:ctf jiko && chmod 4755 jiko
 
 RUN mv flag.txt /flag.txt && chmod 600 /flag.txt && chown root:ctf /flag.txt
 
-EXPOSE 3030
+EXPOSE 9988
 
 ENTRYPOINT ["./entrypoint.sh"]
