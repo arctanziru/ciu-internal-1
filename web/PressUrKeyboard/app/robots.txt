@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /secret
+
+# Part 4 of the flag: _w3b}

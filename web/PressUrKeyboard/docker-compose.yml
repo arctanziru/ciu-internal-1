@@ -1,0 +1,10 @@
+services:
+  inspect-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7070:80"
+    volumes:
+      - ./app:/var/www/html
+    restart: always

@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  elpatron:
+    build: .
+    ports:
+      - "3131:3131"
+    restart: unless-stopped

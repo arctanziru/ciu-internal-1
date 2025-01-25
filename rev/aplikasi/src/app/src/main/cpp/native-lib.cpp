@@ -1,4 +1,6 @@
 #include <jni.h>
+#include <iomanip>
+#include <sstream>
 #include <string>
 
 extern "C" JNIEXPORT jstring JNICALL
@@ -9,49 +11,28 @@ Java_com_example_aplikasi_MainActivity_stringFromJNI(
     return env->NewStringUTF(hello.c_str());
 }
 
-std::string xor_string(const std::string& input)
-{
-    std::string xored;
-    for (char c : input) {
-        xored += c ^ 0x6;
-    }
-
-    return xored;
-}
-
-std::string rotate_string(const std::string& input, const std::string& ignore)
+std::string special_xor(const std::string& input, const std::string& ignore)
 {
     std::string rotated;
     for (char c : input) {
-        if (ignore.find(c) != std::string::npos) {
+        if (ignore.find(c) != std::string::npos || (c >= 48 && c <= 57)) {
             rotated += c;
         } else {
-            rotated += (c + 13);
+            rotated += (c ^ 0xaa);
         }
     }
 
     return rotated;
 }
 
-std::string base64_encode(const std::string& input)
+std::string string_to_hex(const std::string& string) 
 {
-    static const char encodeLookup[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    std::string encodedString;
-    unsigned char temp[3];
-    int inputLength = input.size();
-
-    for (int i = 0; i < inputLength; i += 3) {
-        temp[0] = input[i];
-        temp[1] = (i + 1 < inputLength) ? input[i + 1] : 0;
-        temp[2] = (i + 2 < inputLength) ? input[i + 2] : 0;
-
-        encodedString += encodeLookup[temp[0] >> 2];
-        encodedString += encodeLookup[((temp[0] & 0x03) << 4) | (temp[1] >> 4)];
-        encodedString += (i + 1 < inputLength) ? encodeLookup[((temp[1] & 0x0F) << 2) | (temp[2] >> 6)] : '=';
-        encodedString += (i + 2 < inputLength) ? encodeLookup[temp[2] & 0x3F] : '=';
+    std::ostringstream hex_stream;
+    for (unsigned char s : string) {
+        hex_stream << std::uppercase << std::setw(2) << std::setfill('0') << std::hex << static_cast<int>(s) << "";
     }
 
-    return encodedString;
+    return hex_stream.str();
 }
 
 extern "C"
@@ -61,11 +42,10 @@ Java_com_example_aplikasi_MainActivity_encryptPlainText(JNIEnv *env, jobject thi
     const char* when_yh_str{ env->GetStringUTFChars(when_yh, nullptr) };
     const char* plain_text_str{ env->GetStringUTFChars(plain_text, nullptr) };
 
-    auto rotted = rotate_string(plain_text_str, when_yh_str);
-    auto xored = xor_string(rotted);
-    auto base64 = base64_encode(xored);
+    auto xored = special_xor(plain_text_str, when_yh_str);
+    auto hex = string_to_hex(xored);
 
     env->ReleaseStringUTFChars(when_yh, when_yh_str);
     env->ReleaseStringUTFChars(plain_text, plain_text_str);
-    return env->NewStringUTF(base64.c_str());
+    return env->NewStringUTF(hex.c_str());
 }

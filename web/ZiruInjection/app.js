@@ -15,9 +15,9 @@ db.serialize(() => {
   db.run(`INSERT INTO users (username, password) VALUES ('admin', 'adminhehehe')`);
 
   db.run(
-    `CREATE TABLE flags (id INTEGER PRIMARY KEY, flag TEXT)`
+    `CREATE TABLE ziruflags (id INTEGER PRIMARY KEY, flagsggboys TEXT)`
   );
-  db.run(`INSERT INTO flags (flag) VALUES ('${process.env.FLAG}')`);
+  db.run(`INSERT INTO ziruflags (flagsggboys) VALUES ('${process.env.FLAG}')`);
 });
 
 app.get('/', (req, res) => {
