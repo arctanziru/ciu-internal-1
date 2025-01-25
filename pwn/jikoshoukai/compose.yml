@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  jikoshoukai:
+    build: .
+    ports:
+      - "3030:3030"
+    restart: unless-stopped
