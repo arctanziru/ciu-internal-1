@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "7070:80"
     volumes:
       - ./app:/var/www/html
     restart: always
