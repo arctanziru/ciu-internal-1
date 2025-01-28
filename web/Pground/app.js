@@ -128,9 +128,13 @@ app.post('/render', (req, res) => {
     }
   }
 
-  const compiledFunction = pug.compile(userTemplate);
-  const html = compiledFunction();
-  res.status(200).send(html);
+  try {
+    const compiledFunction = pug.compile(userTemplate);
+    const html = compiledFunction();
+    res.status(200).send(html);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
 });
 
 app.listen(3000, () => {

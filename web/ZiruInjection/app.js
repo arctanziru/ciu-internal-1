@@ -118,6 +118,10 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
+  if (typeof username !== 'string' || typeof password !== 'string') {
+    return res.send('<h1>Invalid username or password!</h1>');
+  }
+
   const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
   console.log('Executing query:', query);
 
